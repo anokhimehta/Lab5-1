@@ -11,13 +11,6 @@ const readText = document.querySelector("[type='button']")
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
-  // TODO
-
-  // Some helpful tips:
-  // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
-  // - Clear the form when a new image is selected
-  // - If you draw the image to canvas here, it will update as soon as a new image is selected
-
   //clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
@@ -34,8 +27,17 @@ img.addEventListener('load', () => {
   const dimensions = getDimmensions(canvas.width, canvas.height, img.width, img.height)
   ctx.drawImage(img, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
 
-
 });
+
+//input image-input
+const imageInput = document.getElementById("image-input")
+imageInput.addEventListener('change', (event) => {
+    img.src = URL.createObjectURL(imageInput.files[0])
+    img.alt = imageInput.files[0].name
+});
+
+//form: submit
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
