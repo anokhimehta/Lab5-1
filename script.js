@@ -50,98 +50,98 @@ imgInput.addEventListener('change', (event) => {
     img.alt = URL.name;
 });
 
-// //form: submit
-// generate.addEventListener("click", (event) => {
-//   //top and bottom texts
-//   event.preventDefault();
+//form: submit
+generate.addEventListener("click", (event) => {
+  //top and bottom texts
+  event.preventDefault();
 
-//   console.log(topText);
-//   console.log(bottomText);
-//   ctx.font = "30px Arial";
-//   ctx.fillStyle = "white";
-//   ctx.textAlign = "center";
+  console.log(topText);
+  console.log(bottomText);
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
 
-//   ctx.fillText(textTop.toUpperCase(), canvas.width/2, 50);
-//   ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
+  ctx.fillText(textTop.toUpperCase(), canvas.width/2, 50);
+  ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
 
-//   ctx.strokeText(textTop.toUpperCase(), canvas.width/2, 50);
-//   ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
+  ctx.strokeText(textTop.toUpperCase(), canvas.width/2, 50);
+  ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
 
-//   //toggle buttons
-//   generate.disabled = true;
-//   clear.disabled = false;
-//   readText.disabled = false;  
+  //toggle buttons
+  generate.disabled = true;
+  clear.disabled = false;
+  readText.disabled = false;  
 
-// })
+})
 
-// //button clear
-// clear.addEventListener("click", () => {
-//   ctx.clearRect(0,0,canvas.width, canvas.height)
+//button clear
+clear.addEventListener("click", () => {
+  ctx.clearRect(0,0,canvas.width, canvas.height)
 
-//   //toggle buttons
-//   read.disabled = true;
-//   clear.disabled = true;
-//   generate.disabled = false;
-// })
+  //toggle buttons
+  read.disabled = true;
+  clear.disabled = true;
+  generate.disabled = false;
+})
 
-// function populateVoiceList() {
-//   voices = speechSynthesis.getVoices();
-//   voiceSelection.remove(0);
+function populateVoiceList() {
+  voices = speechSynthesis.getVoices();
+  voiceSelection.remove(0);
 
-//   for (var i = 0; i < voices.length; i++) {
-//     var option = document.createElement("option");
-//     option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+  for (var i = 0; i < voices.length; i++) {
+    var option = document.createElement("option");
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
 
-//     if(voices[i].default) {
-//       option.textContent += ' -- DEFAULT';
-//     }
+    if(voices[i].default) {
+      option.textContent += ' -- DEFAULT';
+    }
 
-//     option.setAttribute('data-lang', voices[i].lang);
-//     option.setAttribute('data-name', voices[i].name);
-//     document.getElementById('voice-selection').appendChild(option);
-//   }
-//   voiceSelection.disabled = false;
-// }
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    document.getElementById('voice-selection').appendChild(option);
+  }
+  voiceSelection.disabled = false;
+}
 
-// //button read text
-// readText.addEventListener("click", () => {
-//   populateVoiceList();
-//   let topSpeak = new SpeechSynthesisUtterance(textTop);
-//   let bottomSpeak = new SpeechSynthesisUtterance(textBottom);
+//button read text
+readText.addEventListener("click", () => {
+  populateVoiceList();
+  let topSpeak = new SpeechSynthesisUtterance(textTop);
+  let bottomSpeak = new SpeechSynthesisUtterance(textBottom);
 
-//   let choice = voiceSelection.selectedOptions[0].getAttribute('data-name');
+  let choice = voiceSelection.selectedOptions[0].getAttribute('data-name');
 
-//   for (var i = 0; i < voices.length; i++) {
-//     if (voices[i].name == choice) {
-//       topSpeak.voice = voices[i];
-//       bottomSpeak.voice = voices[i];
-//     }
-//   }
-//   topSpeak.volume = volume;
-//   bottomSpeak.volume = volume;
-//   speechSynthesis.speak(topSpeak);
-//   speechSynthesis.speak(bottomSpeak);
-// })
+  for (var i = 0; i < voices.length; i++) {
+    if (voices[i].name == choice) {
+      topSpeak.voice = voices[i];
+      bottomSpeak.voice = voices[i];
+    }
+  }
+  topSpeak.volume = volume;
+  bottomSpeak.volume = volume;
+  speechSynthesis.speak(topSpeak);
+  speechSynthesis.speak(bottomSpeak);
+})
 
-// setTimeout(populateVoiceList, 100);
+setTimeout(populateVoiceList, 100);
 
-// //div: volume-group
-// volGroup.addEventListener("input", () => {
-//   var vol = volGroup.children[1].value
-//   if (vol <= 100 && vol >= 67) {
-//     volGroup.children[0].src = "icons/volume-level-3.svg";
-//   }
-//   else if (vol >= 66 && vol >= 34) {
-//     volGroup.children[0].src = "icons/volume-level-2.svg";
-//   }
-//   else if (vol >= 33 && vol >= 1) {
-//     volGroup.children[0].src = "icons/volume-level-1.svg";
-//   }
-//   else {
-//     volGroup.children[0].src = "icons/volume-level-0.svg";
-//   }
-//   volume = volGroup.children[1].value / 100; //scale volume value
-// })
+//div: volume-group
+volGroup.addEventListener("input", () => {
+  var vol = volGroup.children[1].value
+  if (vol <= 100 && vol >= 67) {
+    volGroup.children[0].src = "icons/volume-level-3.svg";
+  }
+  else if (vol >= 66 && vol >= 34) {
+    volGroup.children[0].src = "icons/volume-level-2.svg";
+  }
+  else if (vol >= 33 && vol >= 1) {
+    volGroup.children[0].src = "icons/volume-level-1.svg";
+  }
+  else {
+    volGroup.children[0].src = "icons/volume-level-0.svg";
+  }
+  volume = volGroup.children[1].value / 100; //scale volume value
+})
 
 
 /**
