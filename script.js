@@ -37,7 +37,30 @@ imageInput.addEventListener('change', (event) => {
 });
 
 //form: submit
+const form = document.getElementById("generate-meme") 
+form.addEventListener("submit", (event) => {
+  //top and bottom texts
+  const textTop = document.getElementById("text-top").value;
+  const textBottom = document.getElementById("text-bottom").value;
 
+  console.log(topText);
+  console.log(bottomText);
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+
+  ctx.fillText(textTop.toUpperCase(), canvas.width/2, 50);
+  ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 25);
+  ctx.strokeText(textTop.toUpperCase(), canvas.width/2, 50);
+  ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 25);
+
+  //toggle buttons
+  generate.disabled = true;
+  clear.disabled = false;
+  readText.disabled = false;
+
+  event.preventDefault();
+})
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
