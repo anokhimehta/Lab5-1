@@ -4,6 +4,11 @@ const img = new Image(); // used to load image from <input> and draw to canvas
 const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 
+var voices = []
+voices = speechSynthesis.getVoices();
+let voiceSelection = document.getElementById("voiceSelection");
+voiceSelection.disabled = false;
+
 //buttons
 const generate = document.querySelector("[type='submit']")
 const clear = document.querySelector("[type='reset']")
@@ -71,6 +76,42 @@ clear.addEventListener("click", () => {
   read.disabled = true;
   clear.disabled = true;
   generate.disabled = false;
+})
+
+function populateVoiceList() {
+  voices = speechSynthesis.getVoices();
+
+  for (var i = 0; i < voices.length; i++) {
+    var option = document.createElement("option");
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if(voices[i].default) {
+      option.textContent += ' -- DEFAULT';
+    }
+
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    voiceSelect.appendChild(option);
+  }
+}
+
+//button read text
+readText.addEventListener("click", () => {
+  populateVoiceList();
+  let topSpeak = new SpeechSynthesisUtterance(textTop);
+  let bottomSpeak = new SpeechSynthesisUtterance(textBottom);
+
+  let choice = voiceSelection.selectedOptions[0].getAttribute('data-name');
+
+  for (var i = 0; i < voices.length; i++) {
+    if (voices[i].name == choice) {
+      topSpeak.voice = voices[i];
+      bottomSpeak.voice = voices[i];
+    }
+  }
+
+  speechSynthesis.speak(topSpeak);
+  speechSynthesis.speak(bottomSpeak);
 })
 
 /**
