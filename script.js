@@ -50,16 +50,27 @@ form.addEventListener("submit", (event) => {
   ctx.textAlign = "center";
 
   ctx.fillText(textTop.toUpperCase(), canvas.width/2, 50);
-  ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 25);
+  ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
+
   ctx.strokeText(textTop.toUpperCase(), canvas.width/2, 50);
-  ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 25);
+  ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
 
   //toggle buttons
   generate.disabled = true;
   clear.disabled = false;
-  readText.disabled = false;
+  readText.disabled = false;  
 
   event.preventDefault();
+})
+
+//button clear
+clear.addEventListener("click", () => {
+  ctx.clearRect(0,0,canvas.width, canvas.height)
+
+  //toggle buttons
+  read.disabled = true;
+  clear.disabled = true;
+  generate.disabled = false;
 })
 
 /**
