@@ -44,7 +44,7 @@ img.addEventListener('load', () => {
 
 //input image-input
 file.addEventListener('change', () => {
-  let file = image_input.files[0];
+  let file = image-input.files[0];
     img.src = URL.createObjectURL(file);
     img.alt = file.name
 });
