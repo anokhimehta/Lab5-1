@@ -48,8 +48,8 @@ imgInput.addEventListener('change', (event) => {
     img.alt = myURL.name;
 });
 
-const textTop = document.getElementById("text-top").value;
-const textBottom = document.getElementById("text-bottom").value;
+const textTop = document.getElementById("text-top");
+const textBottom = document.getElementById("text-bottom");
 
 //form: submit
 generate.addEventListener("click", (event) => {
