@@ -62,11 +62,11 @@ generate.addEventListener("click", (event) => {
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
 
-  ctx.fillText(textTop.toUpperCase(), canvas.width/2, 50);
-  ctx.strokeText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
+  ctx.fillText(textTop.value, canvas.width/2, 50);
+  ctx.strokeText(textBottom.value, canvas.width/2, canvas.height - 20);
 
-  ctx.strokeText(textTop.toUpperCase(), canvas.width/2, 50);
-  ctx.fillText(textBottom.toUpperCase(), canvas.width/2, canvas.height - 20);
+  ctx.strokeText(textTop.value, canvas.width/2, 50);
+  ctx.fillText(textBottom.value, canvas.width/2, canvas.height - 20);
 
   //toggle buttons
   generate.disabled = true;
