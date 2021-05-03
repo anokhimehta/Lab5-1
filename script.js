@@ -55,8 +55,8 @@ generate.addEventListener("click", (event) => {
   //top and bottom texts
   event.preventDefault();
 
-  console.log(topText);
-  console.log(bottomText);
+  console.log(textTop);
+  console.log(textBottom);
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
