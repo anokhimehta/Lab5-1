@@ -6,12 +6,12 @@ const ctx = canvas.getContext('2d');
 
 const file = document.getElementById("image-input");
 
-// var voices = []
-// voices = speechSynthesis.getVoices();
-// const voiceSelection = document.getElementById("voice-selection");
-// voiceSelection.disabled = false;
-// let volGroup = document.getElementById("volume-group")
-// var volume = 1;
+var voices = []
+voices = speechSynthesis.getVoices();
+const voiceSelection = document.getElementById("voice-selection");
+voiceSelection.disabled = false;
+let volGroup = document.getElementById("volume-group")
+var volume = 1;
 
 
 //buttons
