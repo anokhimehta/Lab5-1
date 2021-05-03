@@ -40,7 +40,6 @@ img.addEventListener('load', () => {
   let dimensions = getDimmensions(canvas.width, canvas.height, img.width, img.height)
   ctx.drawImage(img, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
 
-  document.getElementById("generate-meme").reset();
 });
 
 //input image-input
