@@ -19,8 +19,6 @@ const generate = document.querySelector("[type='submit']")
 const clear = document.querySelector("[type='reset']")
 const readText = document.querySelector("[type='button']")
 
-const textTop = document.getElementById("text-top").value;
-const textBottom = document.getElementById("text-bottom").value;
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
@@ -50,6 +48,9 @@ imgInput.addEventListener('change', (event) => {
     img.alt = myURL.name;
 });
 
+const textTop = document.getElementById("text-top").value;
+const textBottom = document.getElementById("text-bottom").value;
+
 //form: submit
 generate.addEventListener("click", (event) => {
   //top and bottom texts
@@ -57,7 +58,7 @@ generate.addEventListener("click", (event) => {
 
   console.log(textTop);
   console.log(textBottom);
-  ctx.font = "30px Arial";
+  ctx.font = "35px Arial";
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
 
@@ -79,7 +80,7 @@ clear.addEventListener("click", () => {
   ctx.clearRect(0,0,canvas.width, canvas.height)
 
   //toggle buttons
-  read.disabled = true;
+  readText.disabled = true;
   clear.disabled = true;
   generate.disabled = false;
 })
