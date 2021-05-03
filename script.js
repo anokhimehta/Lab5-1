@@ -8,6 +8,8 @@ var voices = []
 voices = speechSynthesis.getVoices();
 let voiceSelection = document.getElementById("voiceSelection");
 voiceSelection.disabled = false;
+let volGroup = document.getElementById("volume-group")
+var volume = 1;
 
 //buttons
 const generate = document.querySelector("[type='submit']")
@@ -109,10 +111,30 @@ readText.addEventListener("click", () => {
       bottomSpeak.voice = voices[i];
     }
   }
-
+  topSpeak.volume = volume;
+  bottomSpeak.volume = volume;
   speechSynthesis.speak(topSpeak);
   speechSynthesis.speak(bottomSpeak);
 })
+
+//div: volume-group
+volGroup.addEventListener("input", () => {
+  var vol = volGroup.children[1].value
+  if (vol <= 100 && vol >= 67) {
+    volGroup.children[0].src = "icons/volume-level-3.svg";
+  }
+  else if (vol >= 66 && vol >= 34) {
+    volGroup.children[0].src = "icons/volume-level-2.svg";
+  }
+  else if (vol >= 33 && vol >= 1) {
+    volGroup.children[0].src = "icons/volume-level-1.svg";
+  }
+  else {
+    volGroup.children[0].src = "icons/volume-level-0.svg";
+  }
+  volume = volGroup.children[1].value / 100; //scale volume value
+})
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
