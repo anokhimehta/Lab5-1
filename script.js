@@ -11,6 +11,8 @@ voiceSelection.disabled = false;
 let volGroup = document.getElementById("volume-group")
 var volume = 1;
 
+populateVoiceList();
+
 //buttons
 const generate = document.querySelector("[type='submit']")
 const clear = document.querySelector("[type='reset']")
@@ -31,7 +33,7 @@ img.addEventListener('load', () => {
   readText.disabled = true;
 
   //draw image
-  const dimensions = getDimmensions(canvas.width, canvas.height, img.width, img.height)
+  let dimensions = getDimmensions(canvas.width, canvas.height, img.width, img.height)
   ctx.drawImage(img, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
 
 });
@@ -39,7 +41,8 @@ img.addEventListener('load', () => {
 //input image-input
 const imageInput = document.getElementById("image-input")
 imageInput.addEventListener('change', (event) => {
-    img.src = URL.createObjectURL(imageInput.files[0])
+    const URL = URL.createObjectURL(event.target.files[0]);
+    img.src = objectURL;
     img.alt = imageInput.files[0].name
 });
 
@@ -47,6 +50,7 @@ imageInput.addEventListener('change', (event) => {
 const form = document.getElementById("generate-meme") 
 form.addEventListener("submit", (event) => {
   //top and bottom texts
+  event.preventDefault();
   const textTop = document.getElementById("text-top").value;
   const textBottom = document.getElementById("text-bottom").value;
 
