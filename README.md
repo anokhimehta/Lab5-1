@@ -5,8 +5,8 @@
 
 ## Part 1:
 
-LINK TO YOUR PUBLISHED SITE
+https://anokhimehta.github.io/Lab5-1/
 
 ## Part 2:
 
-(https://github.com/anokhimehta/github-actions-for-ci/issues/7)
+https://github.com/anokhimehta/github-actions-for-ci/issues/7
