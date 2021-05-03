@@ -4,6 +4,8 @@ const img = new Image(); // used to load image from <input> and draw to canvas
 const canvas = document.getElementById("user-image");
 const ctx = canvas.getContext('2d');
 
+const file = document.getElementById("image-input");
+
 var voices = []
 voices = speechSynthesis.getVoices();
 const voiceSelection = document.getElementById("voice-selection");
@@ -11,7 +13,6 @@ voiceSelection.disabled = false;
 let volGroup = document.getElementById("volume-group")
 var volume = 1;
 
-populateVoiceList();
 
 //buttons
 const generate = document.querySelector("[type='submit']")
@@ -43,11 +44,10 @@ img.addEventListener('load', () => {
 });
 
 //input image-input
-const imageInput = document.getElementById("image-input")
-imageInput.addEventListener('change', (event) => {
-    const URL = URL.createObjectURL(event.target.files[0]);
-    img.src = objectURL;
-    img.alt = imageInput.files[0].name
+file.addEventListener('change', () => {
+  let file = image_input.files[0];
+    img.src = URL.createObjectURL(file);
+    img.alt = file.name
 });
 
 // //form: submit
