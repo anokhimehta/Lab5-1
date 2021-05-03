@@ -43,10 +43,11 @@ img.addEventListener('load', () => {
 });
 
 //input image-input
-file.addEventListener('change', () => {
-  let file = image-input.files[0];
-    img.src = URL.createObjectURL(file);
-    img.alt = file.name
+const imgInput = document.getElementById("image-input");
+imgInput.addEventListener('change', (event) => {
+  const URL = URL.createObjectURL(event.target.files[0]);
+    img.src = URL
+    img.alt = URL.name;
 });
 
 // //form: submit
