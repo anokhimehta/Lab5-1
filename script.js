@@ -46,8 +46,8 @@ img.addEventListener('load', () => {
 const imgInput = document.getElementById("image-input");
 imgInput.addEventListener('change', (event) => {
   const myURL = URL.createObjectURL(event.target.files[0]);
-    img.src = URL
-    img.alt = URL.name;
+    img.src = myURL
+    img.alt = myURL.name;
 });
 
 //form: submit
